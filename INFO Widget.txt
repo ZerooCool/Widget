@@ -1,4 +1,4 @@
-#############    #
+ï»¿#############    #
 # Objectif ########
 #############    #
 
@@ -8,13 +8,13 @@
 # Lire automatiquement un flux RSS.xml
 # Auto Read RSS.xm
 
-# Créer un Widget.
-# Créate a Widget.
+# CrÃ©er un Widget.
+# Create a Widget.
 
 
 #########    #
 # Code ########
 #########    #
 
-# Déposer le code.
-# Indiquer les références.
+# DÃ©poser les 2 codes existant.
+# Indiquer les rÃ©fÃ©rences des codes utilisÃ©s.
