@@ -13,7 +13,7 @@ Widget
 # Créer un Widget.
 # Create a Widget.
 
-# A faire - Generer un code automatique widget + affichage du flux RSS
+# A faire - Générer un code automatique widget + affichage du flux RSS
 
 
 #########    #
@@ -29,7 +29,13 @@ Widget
 		-> Un mail est envoyé à l'auteur le 11 novembre 2014 à 16h pour demander son accord d'utilisation.
 
 	¤ Le script de lecture des flux RSS vient du site le monde ? ( A vérifier. )
-		-> Un mail DOIT ETRE ENVOYE.
+		-> Un mail DOIT ETRE ENVOYE. L'URL retrouvée.
 		
 
-Ajouter des bords arrondis.
+0) Tester en local.
+		
+1) Ajouter des bords arrondis.
+
+2) Solution de passer par Dom pour manipuler le contenu est également envisageable.
+
+...

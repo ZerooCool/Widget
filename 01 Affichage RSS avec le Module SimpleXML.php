@@ -1,22 +1,21 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr" dir="ltr">
-	<head>
+<head>
+    <title>Afficher un flux RSS</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    		<title>Afficher un flux RSS</title>
+
+</head>
+<body>
+<?php
+try{
+	if(!@$fluxrss=simplexml_load_file('http://www.http://ressources-solidaires.org/squelettes/espace_client/admin/xml/rss_74.xml')){
+		throw new Exception('Flux introuvable.');
+	}		
 	
-	</head>
-  	<body>
-	<?php
-	try{
-		
-		if(!@$fluxrss=simplexml_load_file('http://www.lemonde.fr/rss/sequence/0,2-651865,1-0,0.xml')){
-			throw new Exception('Flux introuvable');
-		}		
-		if(empty($fluxrss->channel->title) || empty($fluxrss->channel->description) || empty($fluxrss->channel->item->title))
-			throw new Exception('Flux invalide');
+	if(empty($fluxrss->channel->title) || empty($fluxrss->channel->description) || empty($fluxrss->channel->item->title))
+		throw new Exception('Flux invalide.');
 			
-		echo '<h3>'.(string)$fluxrss->channel->title.'</h3>
-				<p>'.(string)$fluxrss->channel->description.'</p>';
+		echo '<h3>'.(string)$fluxrss->channel->title.'</h3><p>'.(string)$fluxrss->channel->description.'</p>';
 		
 		$i = 0;
 		$nb_affichage = 5;
@@ -28,8 +27,8 @@
 		}
 		echo '</ul>';
 	}
+	
 	catch(Exception $e){
 		echo $e->getMessage();
 	}
-
 ?>

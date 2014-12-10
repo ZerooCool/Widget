@@ -1,0 +1,12 @@
+<?php
+try {
+$dom = new DomDocument();
+$dom->loadHtmlFile('http://www.allhtml.com/forums/posts_list/topic:503532/');
+$racine = $dom->documentElement;
+$divs = $racine->getElementsByTagName('div');
+foreach($divs as $div)
+if($div->getAttribute('class') === 'online')
+echo "\t\t<p>".nl2br(htmlspecialchars(utf8_decode($div->nodeValue)))."</p>\n";
+}
+catch(DOMException $e) {}
+?>
