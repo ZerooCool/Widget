@@ -2,15 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr" dir="ltr">
 <head>
     <title>Afficher un flux RSS</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
 <body>
+
 <?php
 try{
-	if(!@$fluxrss=simplexml_load_file('http://www.http://ressources-solidaires.org/squelettes/espace_client/admin/xml/rss_74.xml')){
-		throw new Exception('Flux introuvable.');
-	}		
+	if(!@$fluxrss=simplexml_load_file('./xml/rss_test_47.xml')){
+		throw new Exception('Flux introuvable. L\'administrateur doit vérifier le lien du flux envoyé dans le fichier : "01_Affichage RSS avec le Module SimpleXML.php" ');}		
 	
 	if(empty($fluxrss->channel->title) || empty($fluxrss->channel->description) || empty($fluxrss->channel->item->title))
 		throw new Exception('Flux invalide.');
@@ -23,12 +22,9 @@ try{
 		foreach($fluxrss->channel->item as $item){
 			echo '<li><a href="'.(string)$item->link.'">'.(string)$item->title.'</a> <i>publié le'.(string)date('d/m/Y à G\hi',strtotime($item->pubDate)).'</i></li>';
 			if(++$i>=$nb_affichage)
-				break;
-		}
-		echo '</ul>';
-	}
+				break;}
+		echo '</ul>';}
 	
 	catch(Exception $e){
-		echo $e->getMessage();
-	}
+		echo $e->getMessage();}
 ?>
