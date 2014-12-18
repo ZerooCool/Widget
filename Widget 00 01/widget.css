@@ -1,1 +1,36 @@
-@CHARSET "ISO-8859-1";
+@CHARSET "UTF-8";
+<style type="text/css">
+#pscroller1{
+font-size: 10px;
+font-family: verdana;
+width: 200px;
+height: 100px;
+padding: 5px;
+border: 1px solid #cccccc; /*  Modification de la couleur  */
+background-color: #fcdca5; /*  Modification de la couleur  */
+}
+
+#pscroller2{
+font-size: 10px;
+font-family: verdana;
+width: 350px;
+height: 20px;
+border: 1px solid black;
+padding: 3px;
+}
+
+#pscroller2 a{
+text-decoration: none;
+}
+
+// Class renseign�e par Landry Mercier.
+.someclass{
+background-color: #fcdca5; /* landry - normalement inutile si le background de pscroller1 n'est plus lightyellow */
+background-image: url("http://www.ressources-solidaires.org/squelettes/css/img/back-orangeman.png");
+color: #4b2323;
+border-radius: 0 0 10px 10px;
+}
+
+.someclass a { color: #ff2800; } /* landry - ajout pour les liens */ /*fin modif css landry*/
+// Fin de Class renseign�e par Landry Mercier.
+</style>
