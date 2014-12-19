@@ -1,5 +1,4 @@
-@CHARSET "UTF-8";
-<style type="text/css">
+/* Correspond aux paramètres d'affichage du Widget 1 */
 #pscroller1{
 font-size: 10px;
 font-family: verdana;
@@ -10,6 +9,7 @@ border: 1px solid #cccccc; /*  Modification de la couleur  */
 background-color: #fcdca5; /*  Modification de la couleur  */
 }
 
+/* Correspond aux paramètres d'affichage du Widget 2 */
 #pscroller2{
 font-size: 10px;
 font-family: verdana;
@@ -19,11 +19,12 @@ border: 1px solid black;
 padding: 3px;
 }
 
+/* Correspond a ... */
 #pscroller2 a{
 text-decoration: none;
 }
 
-// Class renseign�e par Landry Mercier.
+/* Correspond a Class renseignée par Landry Mercier. C'est à dire ? */
 .someclass{
 background-color: #fcdca5; /* landry - normalement inutile si le background de pscroller1 n'est plus lightyellow */
 background-image: url("http://www.ressources-solidaires.org/squelettes/css/img/back-orangeman.png");
@@ -31,6 +32,6 @@ color: #4b2323;
 border-radius: 0 0 10px 10px;
 }
 
+/* Correspond a ... */
 .someclass a { color: #ff2800; } /* landry - ajout pour les liens */ /*fin modif css landry*/
-// Fin de Class renseign�e par Landry Mercier.
-</style>
+// Fin de Class renseignée par Landry Mercier.

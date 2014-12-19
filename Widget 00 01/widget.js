@@ -1,21 +1,19 @@
-<script type="text/javascript">
-
 /***********************************************
-* Pausing up-down scroller- � Dynamic Drive (www.dynamicdrive.com)
+* Pausing up-down scroller-Dynamic Drive (www.dynamicdrive.com)
 ***********************************************/
 function pausescroller(content, divId, divClass, delay){
-this.content=content //message array content
-this.tickerid=divId //ID of ticker div to display information
-this.delay=delay //Delay between msg change, in miliseconds.
-this.mouseoverBol=0 //Boolean to indicate whether mouse is currently over scroller (and pause it if it is)
-this.hiddendivpointer=1 //index of message array for hidden div
+this.content=content // Message array content.
+this.tickerid=divId // ID of ticker div to display information.
+this.delay=delay // Délai entre chaque changement, en millisecondes.
+this.mouseoverBol=0 // Boolean to indicate whether mouse is currently over scroller (and pause it if it is)
+this.hiddendivpointer=1 // index of message array for hidden div
 document.write('<div id="'+divId+'" class="'+divClass+'" style="position: relative; overflow: hidden"><div class="innerDiv" style="position: absolute; width: 100%" id="'+divId+'1">'+content[0]+'</div><div class="innerDiv" style="position: absolute; width: 100%; visibility: hidden" id="'+divId+'2">'+content[1]+'</div></div>')
 var scrollerinstance=this
-if (window.addEventListener) //run onload in DOM2 browsers
+if (window.addEventListener) // run onload in DOM2 browsers
 window.addEventListener("load", function(){scrollerinstance.initialize()}, false)
-else if (window.attachEvent) //run onload in IE5.5+
+else if (window.attachEvent) // run onload in IE5.5+
 window.attachEvent("onload", function(){scrollerinstance.initialize()})
-else if (document.getElementById) //if legacy DOM browsers, just start scroller after 0.5 sec
+else if (document.getElementById) // if legacy DOM browsers, just start scroller after 0.5 sec
 setTimeout(function(){scrollerinstance.initialize()}, 500)
 }
 
@@ -28,7 +26,7 @@ this.tickerdiv=document.getElementById(this.tickerid)
 this.visiblediv=document.getElementById(this.tickerid+"1")
 this.hiddendiv=document.getElementById(this.tickerid+"2")
 this.visibledivtop=parseInt(pausescroller.getCSSpadding(this.tickerdiv))
-//set width of inner DIVs to outer DIV's width minus padding (padding assumed to be top padding x 2)
+// set width of inner DIVs to outer DIV's width minus padding (padding assumed to be top padding x 2)
 this.visiblediv.style.width=this.hiddendiv.style.width=this.tickerdiv.offsetWidth-(this.visibledivtop*2)+"px"
 this.getinline(this.visiblediv, this.hiddendiv)
 this.hiddendiv.style.visibility="visible"
@@ -95,4 +93,3 @@ return window.getComputedStyle(tickerobj, "").getPropertyValue("padding-top")
 else
 return 0
 }
-</script>
