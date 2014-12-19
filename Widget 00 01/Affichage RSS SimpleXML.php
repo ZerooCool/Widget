@@ -1,30 +1,28 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr" dir="ltr">
 <head>
-    <title>Afficher un flux RSS</title>
+    <title>Widget RSS</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
 <body>
 
-<?php
+<?php 
+
+/* Encapsulation dans le try ( ! ) */
 try{
-	if(!@$fluxrss=simplexml_load_file('./xml/rss_test_47.xml')){
-		throw new Exception('Flux introuvable. L\'administrateur doit vérifier le lien du flux envoyé dans le fichier : "01_Affichage RSS avec le Module SimpleXML.php" ');}		
-	
-	if(empty($fluxrss->channel->title) || empty($fluxrss->channel->description) || empty($fluxrss->channel->item->title))
-		throw new Exception('Flux invalide.');
-			
-		echo '<h3>'.(string)$fluxrss->channel->title.'</h3><p>'.(string)$fluxrss->channel->description.'</p>';
+	/* La fonction simplexml_load_file permet de charger un fichier XML. */
+	/* La fonction retourne faux si le fichier ne se charge pas correctement. */
+	/* Si le fichier n’a pas été trouvé, un ‘!’ lance une Exception qui arrête le script et renvoie au Bloc catch. */
+	/* Le ‘@‘ devant la fonction simplexml_load_file permet de ne pas afficher les warning en cas de fichier introuvable. */
+	if(!@$fluxrss=simplexml_load_file('../xml/rss_test_48.xml')){
+		throw new Exception('Flux introuvable');}
 		
-		$i = 0;
-		$nb_affichage = 5;
-		echo '<ul>';
-		foreach($fluxrss->channel->item as $item){
-			echo '<li><a href="'.(string)$item->link.'">'.(string)$item->title.'</a> <i>publié le'.(string)date('d/m/Y à G\hi',strtotime($item->pubDate)).'</i></li>';
-			if(++$i>=$nb_affichage)
-				break;}
-		echo '</ul>';}
-	
-	catch(Exception $e){
-		echo $e->getMessage();}
+		echo'Code à venir.';
+		
+}
+
+
+/* Gestion des erreurs avec la classe Exception native de PHP. */
+/* Bloc catch qui va afficher le message d'erreur. */
+catch(Exception $e){echo $e->getMessage();}
 ?>
