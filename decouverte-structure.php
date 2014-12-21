@@ -8,7 +8,7 @@ Le résultat du parser construit le tableau associatif qui permet de manipuler l
 <?php
 //Script xml_parser.php?file='fichier_test.xml'
 
-$file = ( !empty($_GET['file']) ? $_GET['file'] : '../xml/rss_test_48.xml');
+$file = ( !empty($_GET['file']) ? $_GET['file'] : 'xml/rss_test_48.xml');
 $tb = array();
 
 function pere_ou_fils( $_elt ){

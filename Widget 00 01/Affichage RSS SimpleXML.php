@@ -64,17 +64,7 @@ try{
 		
 /* Fin */
 /* ################################################################################################################################## */
-		 				 
-		
-		
-		
-			
 
-			
-
-		/* A supprimer. */
-		echo'<br/><br/>Fin de l\'intégration.<br/><br/>Source : http://www.snoupix.com/lire-un-flux-rss-avec-simplexml_tutorial_17.html';
-		echo'Une autre source : http://unpointvirgule.fr/2012/06/afficher-un-flux-rss-avec-simplexml/';
 }
 
 
@@ -82,8 +72,3 @@ try{
 /* Bloc catch qui va afficher le message d'erreur. */
 catch(Exception $e){echo $e->getMessage();}
 ?>
-
-
-
-
-
