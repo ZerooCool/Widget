@@ -6,3 +6,56 @@ foreach($xml->xpath('//voiture') AS $inf){
 echo 'Marque : '.$inf->marque.' - Type : '.$inf->moteur->type.'<br />';}
 
 + http://richard-ostrowski.eu/SILNTI/supports/IP3/xpath.pdf
+
+
+
+?"O":"N";
+operation ternaire
+
+
+
+/* Aide : Pour connaitre le contenu de l’objet $fluxrss : echo ('var_dump($fluxrss)'); */
+/* echo (var_dump($fluxrss)); */
+
+
+
+oubli pas a quoi ser le var_dummp
+var_dump
+http://php.net/manua...unction.var-dump.php
+tu peu utiliser print_r pour les tableau
+http://php.net/manua...function.print-r.php
+l'idée, c'est que des que tu peu, quand on te propose des fonctions, tu va dans ladoc
+tu reste pas juste a avoir testé 1 fois rapidos le var_dump
+tu va dans ladoc
+tu regarde
+
+
+
+Complément pour SimpleXML mais ne fonctionne pas. Bref inutile car le flux n'est de toute façon pas vide.
+/* A supprimer. */
+			/* A FAIRE : Le controle sur les string à la place des empty. */
+			/* La fonction empty peut être remplacée par la fonction is_string qui spécifie à PHP le type de contenu "chaîne de caractères". */
+			$CtrlFlux1 = (isset($fluxrss->channel->title) && is_string($fluxrss->channel->title[0]) && strlen($fluxrss->channel->title)>=4);
+			$CtrlFlux2 = (isset($fluxrss->channel->item->description) && is_string($fluxrss->channel->item->description) && strlen($fluxrss->channel->item->description)>=4);
+			$CtrlFlux3 = (isset($fluxrss->channel->item->title) && is_string($fluxrss->channel->item->title) && strlen($fluxrss->channel->item->title)>=4);
+			echo("<br/>Attente d'affichage de la valeur de la variable<br/>");
+			echo("$CtrlFlux1");
+			echo("<br/><br/>");
+			echo("$CtrlFlux2");
+			echo("<br/><br/>");
+			echo("$CtrlFlux3");
+			if(!(null!==$CtrlFlux1) && (null!==$CtrlFlux2) && (null!==$CtrlFlux3)) {
+				echo ('En attente d\'affichage. Pour le moment rien n\'est affiché.');
+				echo ('<br/>');
+				echo ('<h3>Affichage OK : '.$fluxrss->channel->item->title[0].'</h3><p>'.$fluxrss->channel->item->description.'</p>');}
+
+				
+			/* Test pour connaître l'existance, si chaine de caractère, et la longueur.*/		
+			echo isset($fluxrss->channel->title)?"O":"N";
+			echo is_string($fluxrss->channel->title)?"O":"N"; /* Affiche Non */
+			echo is_string($fluxrss->channel->title[0])?"O":"N"; /* Affiche Non */
+			echo strlen($fluxrss->channel->title)>=4?"O":"N";
+			echo("<br/>");
+			
+			var_dump($fluxrss->channel->title);
+			echo $fluxrss->channel->title[0];

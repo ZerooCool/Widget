@@ -17,42 +17,64 @@ try{
 	if(!@$fluxrss=simplexml_load_file('../xml/rss_test_48.xml')){
 		throw new Exception('Flux introuvable');}
 		
-		/* Récupérer une donnée dans le fichier XML devient facile sous forme de tableau. */
-		/* Exemple pour $fluxrss->channel->title qui va renvoyer : */
-		/* Le contenu de la balise title, avec pour parent « channel »  lui même ayant pour parent $fluxrss qui est l’élement racine rss. */
-		/* Pour connaitre le contenu de l’objet $fluxrss : echo ('var_dump($fluxrss)'); */
-
-
-		/* Si le fichier n’a pas été trouvé, un ‘!’ lance une Exception qui arrête le script et renvoie au Bloc catch. */
 		/* Utilisation de la fonction empty, si les données sont vides une erreur est renvoyée.  */
-		/* La fonction empty peut être remplacée par la fonction is_string qui spécifie à PHP le type de contenu "chaîne de caractères". */
-		if(!is_string($fluxrss->channel->title) || empty($fluxrss->channel->description) || empty($fluxrss->channel->item->title)) throw new Exception('Flux invalide');
-		echo '<h3>'.$fluxrss->channel->title.'</h3><p>'.$fluxrss->channel->description.'</p>';
+		if(empty($fluxrss->channel->title) || empty($fluxrss->channel->description) || empty($fluxrss->channel->item->title)) throw new Exception('Flux invalide');
 		
+			/* Affichage du titre principale du Flux RSS */
+			echo '<h3>'.$fluxrss->channel->title.'</h3>';
 		
-		
-		/*  A FAIRE, Le controle sur les string à la place des empty.
-		La question du string !
-		// if(isset($fluxrss->channel->title) && is_string($fluxrss->channel->title) && str_lenght($fluxrss->channel->title)>=4)
-		
-		
-		$ctrl1 = (isset($fluxrss->channel->title) && is_string($fluxrss->channel->title) && str_lenght($fluxrss->channel->title)>=4)?"oui":"non";
-		echo  $ctrl1;
-		$ctrl2 = (isset($fluxrss->channel->title) && is_string($fluxrss->channel->title) && str_lenght($fluxrss->channel->title)>=4) ;
-		echo  $ctrl2;
+			/* Affichage de la description principale du Flux RSS */
+			echo '<p>'.$fluxrss->channel->description.'</p>';
 
-		----------------------->
+/* ##################################################################### */					
+/* # Boucle a exploiter pour afficher le contenu dans le Widget xHTML. # */
+/* ################################################################################################################################## */			
+/* Début */
+			
+				$i = 0; /* Déclaration de la variable $i permettant de boucler et affectation de la valeur 0 */
+				$nb_affichage = 100; /* Déclaration de la variable $nb_affichage et affectation de la valeur 05*/
+				
+				echo '<ul>'; /* Ouverture de l'élément principale conteneur de la liste à puce qui va être crée jusqu'à 100 fois grâce à la boucle. */
 		
-		$ctrl1 = (isset($fluxrss->channel->title) && is_string($fluxrss->channel->title) && str_length($fluxrss->channel->title)>=4)?$fluxrss->channel->title:null;
-		if(null!==$ctrl1){
-			//work
-		}
+					/* Boucle pour afficher l'ensemble des informations du fichier .xml*/
+					foreach($fluxrss->channel->item as $item){
+						
+						/* Ouverture de la liste à puce. */
+						echo('<li>');
+							
+							/* IMPORTANT */
+							/* ERREUR RS A REPORTER */
+							/* Permet d'ajouter la date de création de l'annonce, mais, certaines dates sont de 1970 sur le fichier actuel rss_48.xml */
+							/* echo('<i>publié le'.(string)date('d/m/Y à G\hi',strtotime($item->pubDate)).'</i>'); echo('<br/>'); */
+						
+						/* Création du lien */
+						echo('<a href="'.(string)$item->link.'">'.(string)$item->title.'</a>');
+						
+						/* Fermeture de la liste à puce. */
+						echo ('</li>');
+						
+						/* Affichage de la description. */
+						echo (''.(string)$item->description.'');
+						
+					if(++$i>=$nb_affichage)
+					break;
+			 		}
+		 		
+		 		echo '</ul>'; /* Fermeture de l'élément principale conteneur de la liste à puce. */
 		
-		 */
+/* Fin */
+/* ################################################################################################################################## */
+		 				 
 		
 		
 		
-		echo'Fin.<br/><br/>Source : http://www.snoupix.com/lire-un-flux-rss-avec-simplexml_tutorial_17.html';
+			
+
+			
+
+		/* A supprimer. */
+		echo'<br/><br/>Fin de l\'intégration.<br/><br/>Source : http://www.snoupix.com/lire-un-flux-rss-avec-simplexml_tutorial_17.html';
+		echo'Une autre source : http://unpointvirgule.fr/2012/06/afficher-un-flux-rss-avec-simplexml/';
 }
 
 
