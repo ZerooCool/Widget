@@ -18,6 +18,7 @@ try{
 		throw new Exception('Flux introuvable');}
 		
 		/* Utilisation de la fonction empty, si les données sont vides une erreur est renvoyée.  */
+		/* Un contrôle sur is_string peut être envisagé plutôt que d'utiliser empty. */
 		if(empty($fluxrss->channel->title) || empty($fluxrss->channel->description) || empty($fluxrss->channel->item->title)) throw new Exception('Flux invalide');
 		
 			/* Affichage du titre principale du Flux RSS */
@@ -45,6 +46,7 @@ try{
 							/* IMPORTANT */
 							/* ERREUR RS A REPORTER */
 							/* Permet d'ajouter la date de création de l'annonce, mais, certaines dates sont de 1970 sur le fichier actuel rss_48.xml */
+							/* La fonction date prend en paramètre un format et un timestamp. La fonction strtotime convertit la date pudDate en timestamp. */
 							/* echo('<i>publié le'.(string)date('d/m/Y à G\hi',strtotime($item->pubDate)).'</i>'); echo('<br/>'); */
 						
 						/* Création du lien */
@@ -60,8 +62,8 @@ try{
 					break;
 			 		}
 		 		
-		 		echo '</ul>'; /* Fermeture de l'élément principale conteneur de la liste à puce. */
-		
+		 		echo '</ul>'; /* Fermeture de l'élément principale conteneur de la liste à puce. */		
+		 		
 /* Fin */
 /* ################################################################################################################################## */
 
