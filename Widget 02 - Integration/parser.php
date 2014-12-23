@@ -8,7 +8,11 @@
 
 <?php 
 
-/* Encapsulation dans le try ( ! ) */
+/* ############################## */
+/* # Encapsulation dans le try. # */
+/* ################################################################################################################################## */
+/* Début */
+
 try{
 	/* La fonction simplexml_load_file permet de charger un fichier XML. */
 	/* La fonction retourne faux si le fichier ne se charge pas correctement. */
@@ -27,58 +31,50 @@ try{
 			/* Affichage de la description principale du Flux RSS */
 			echo '<p>'.$fluxrss->channel->description.'</p>';
 
-/* ##################################################################### */					
-/* # Boucle a exploiter pour afficher le contenu dans le Widget xHTML. # */
-/* ################################################################################################################################## */			
+/* ######################################################### */					
+/* # Boucle pour afficher le contenu dans le Widget xHTML. # */
+/* ################################################################################################################################## */
 /* Début */
 			
 				$i = 0; /* Déclaration de la variable $i permettant de boucler et affectation de la valeur 0 */
 				$nb_affichage = 100; /* Déclaration de la variable $nb_affichage et affectation de la valeur 05*/
-				
-				echo '<ul>'; /* Ouverture de l'élément principale conteneur de la liste à puce qui va être crée jusqu'à 100 fois grâce à la boucle. */
-		
+
 					/* Boucle pour afficher l'ensemble des informations du fichier .xml*/
 					foreach($fluxrss->channel->item as $item){
 						
-						
-						
+						/* IMPORTANT */
+						/* ERREUR RS A REPORTER */
+						/* Permet d'ajouter la date de création de l'annonce, mais, certaines dates sont de 1970 sur le fichier actuel rss_48.xml */
+						/* La fonction date prend en paramètre un format et un timestamp. La fonction strtotime convertit la date pudDate en timestamp. */
+						/* echo('<i>publié le'.(string)date('d/m/Y à G\hi',strtotime($item->pubDate)).'</i>'); echo('<br/>'); */
 						
 						/* Le parsing et son rendu doit donner le modèle ci-dessous */
-						/* pausecontentNew[1]='<a href="LIEN" target="_offres-emploi">TITRE DU LIEN</a><br />DESCRIPTION' */
+						/* pausecontentNew[0]='<a href="LIEN" target="_offres-emploi">TITRE DU LIEN</a><br />DESCRIPTION' */
+
 						
 						
+						/* Le problème, la ligne ne rend pas correctement en JAVASCRIPT */
 						
+						/* Création du lien et du titre du lien. */
+						/* Ajout du title et de la target. */
+						/* Ajout de la description */
+						print('pausecontentNew['.$i.']=\'<a href="'.(string)$item->link.'" target="_offres-emploi" title="'.(string)$item->title.'">'.(string)$item->title.'</a><br />'.(string)$item->description.'\'');
+
+						print ('<br />');
+
 						
-						
-						
-						
-						/* Ouverture de la liste à puce. */
-						echo('<li>');
-							
-							/* IMPORTANT */
-							/* ERREUR RS A REPORTER */
-							/* Permet d'ajouter la date de création de l'annonce, mais, certaines dates sont de 1970 sur le fichier actuel rss_48.xml */
-							/* La fonction date prend en paramètre un format et un timestamp. La fonction strtotime convertit la date pudDate en timestamp. */
-							/* echo('<i>publié le'.(string)date('d/m/Y à G\hi',strtotime($item->pubDate)).'</i>'); echo('<br/>'); */
-						
-						/* Création du lien */
-						echo('<a href="'.(string)$item->link.'">'.(string)$item->title.'</a>');
-						
-						/* Fermeture de la liste à puce. */
-						echo ('</li>');
-						
-						/* Affichage de la description. */
-						echo (''.(string)$item->description.'');
 						
 					if(++$i>=$nb_affichage)
 					break;
 			 		}
-		 		
-		 		echo '</ul>'; /* Fermeture de l'élément principale conteneur de la liste à puce. */		
-		 		
-/* Fin */
+	 		
+/* Fin de la boucle pour afficher le contenu dans le Widget xHTML. */
 /* ################################################################################################################################## */
 
+
+/* Fin d'encapsulation dans le try. */
+/* ################################################################################################################################## */
+		 		
 }
 
 
