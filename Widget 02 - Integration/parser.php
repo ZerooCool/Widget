@@ -57,6 +57,7 @@ try{
 
 
 		/* Le problème, la ligne ne rend pas correctement en JAVASCRIPT puisque le rendu final ne fonctionne pas. */
+
 						
 
 						/* Création du lien et du titre du lien. */

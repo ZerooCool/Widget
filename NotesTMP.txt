@@ -2,6 +2,10 @@ Veille *
 
 
 
+Merci le déboguer javascript.
+
+
+
 Le code final doit être englobé entre <div class="margbottom1"> </div>
 
 

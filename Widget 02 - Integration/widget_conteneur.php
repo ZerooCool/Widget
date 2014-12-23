@@ -61,7 +61,7 @@ try{
 
 			/* Début du Javascript qui permet l'affichage du parser dans sa box. */
 			echo '<script type="text/javascript">';
-			echo 'var pausecontentNew=new Array()';
+			echo 'var pausecontentNew=new Array();';
 /* ######################################################### */					
 /* # Boucle pour afficher le contenu dans le Widget xHTML. # */
 /* ################################################################################################################################## */
@@ -80,11 +80,7 @@ try{
 						/* echo('<i>publié le'.(string)date('d/m/Y à G\hi',strtotime($item->pubDate)).'</i>'); echo('<br/>'); */
 						
 						/* Le parsing et son rendu doit donner le modèle ci-dessous */
-						/* pausecontentNew[0]='<a href="LIEN" target="_offres-emploi">TITRE DU LIEN</a><br />DESCRIPTION' */
-
-
-		/* Le problème, la ligne ne rend pas correctement en JAVASCRIPT , puisque le rendu final ne fonctionne pas */
-						
+						/* pausecontentNew[0]='<a href="LIEN" target="_offres-emploi">TITRE DU LIEN</a><br />DESCRIPTION' */						
 
 						/* Création du lien et du titre du lien. */
 						/* Ajout du title et de la target. */
@@ -104,8 +100,6 @@ try{
 
 			echo '</script>';
 
-				
-			
 			
 /* Fin d'encapsulation dans le try. */
 /* ################################################################################################################################## */
