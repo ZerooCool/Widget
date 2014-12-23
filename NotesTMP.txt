@@ -6,6 +6,20 @@ Le code final doit être englobé entre <div class="margbottom1"> </div>
 
 
 
+
+19:43 [ZerooCool]: echo "\r\r"; fonctionnel
+19:43 [ZerooCool]: echo '\r\r'; ne fonctionne pas
+19:43 [ZerooCool]: Résolu.
+
+
+
+
+Utiliser plutot que foreach :
+($array as $key => $value) {
+
+
+
+
 ?"O":"N";
 operation ternaire
 
@@ -59,6 +73,4 @@ Complément pour SimpleXML mais ne fonctionne pas. Bref inutile car le flux n'es
 			
 			
 
-/* A supprimer. */
-		echo'<br/><br/>Fin de l\'intégration.<br/><br/>Source : http://www.snoupix.com/lire-un-flux-rss-avec-simplexml_tutorial_17.html';
 		echo'Une autre source : http://unpointvirgule.fr/2012/06/afficher-un-flux-rss-avec-simplexml/';

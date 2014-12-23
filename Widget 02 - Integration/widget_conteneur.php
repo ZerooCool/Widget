@@ -20,11 +20,6 @@ echo("Hello Widget !");
 ?></H3>
 
 
-
-<!-- Le contenu a afficher par la suite. -->
-<!-- >>> Ci-dessous il faut récupérer les informations depuis le fichier XML. <<< -->
-
-
 <!--  Sources du Widget 1 en exemple. -->
 <script type="text/javascript">
 var pausecontent=new Array()
@@ -37,6 +32,7 @@ pausecontent[5]='<a href="http://www.espacejavascript.com/DESIGN/chartegraphique
 </script>
 
 
+<!-- >>> Ci-dessous il faut récupérer les informations depuis le fichier XML. <<< -->
 <!--  Sources du Widget 2 a adapter. -->
 <?php 
 
@@ -64,14 +60,14 @@ try{
 			echo ('<p>'.$fluxrss->channel->description.'</p>');
 
 			/* Début du Javascript qui permet l'affichage du parser dans sa box. */
-			echo '<script type=\"text/javascript\">';
+			echo '<script type="text/javascript">';
 			echo 'var pausecontentNew=new Array()';
 /* ######################################################### */					
 /* # Boucle pour afficher le contenu dans le Widget xHTML. # */
 /* ################################################################################################################################## */
 /* Début */
 
-$i = 0; /* Déclaration de la variable $i permettant de boucler et affectation de la valeur 0 */
+				$i = 0; /* Déclaration de la variable $i permettant de boucler et affectation de la valeur 0 */
 				$nb_affichage = 100; /* Déclaration de la variable $nb_affichage et affectation de la valeur 05*/
 
 					/* Boucle pour afficher l'ensemble des informations du fichier .xml*/
@@ -86,21 +82,19 @@ $i = 0; /* Déclaration de la variable $i permettant de boucler et affectation d
 						/* Le parsing et son rendu doit donner le modèle ci-dessous */
 						/* pausecontentNew[0]='<a href="LIEN" target="_offres-emploi">TITRE DU LIEN</a><br />DESCRIPTION' */
 
+
+		/* Le problème, la ligne ne rend pas correctement en JAVASCRIPT , puisque le rendu final ne fonctionne pas */
 						
-				
-						/* Le problème, la ligne ne rend pas correctement en JAVASCRIPT */
-						/* \r\n ? */
-						/* Peut être la valeur de $i ? */
-						/* le BR ? */
-						/* parseInt() print_r ..??..??..??..? */
-						
-						
+
 						/* Création du lien et du titre du lien. */
 						/* Ajout du title et de la target. */
 						/* Ajout de la description */
-						echo 'pausecontentNew['.$i.']=\'<a href=\"'.(string)$item->link.'\" target=\"_offres-emploi\" title=\"'.(string)$item->title.'\">'.(string)$item->title.'</a><br />'.(string)$item->description.'\'';
-						echo '<br />';
+						/* addslashes rajoute l'échappement des caractères attendu par le javascript. */
+						echo 'pausecontentNew['.$i.']=\'<a href="'.(string)$item->link.'" target="_offres-emploi" title="'.addslashes((string)$item->title).'">'.addslashes((string)$item->title).'</a><br />'.addslashes((string)$item->description).'\'';
 						
+						/* Ajoute un retour chariot, pour un affichage propre du code source rendu */
+						echo "\r";
+
 					if(++$i>=$nb_affichage)
 					break;
 			 		}
