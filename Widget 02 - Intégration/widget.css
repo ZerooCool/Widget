@@ -1,11 +1,49 @@
-<div class="margbottom1">
-<!-- start feedwind code -->
-<script type="text/javascript">
+/* Correspond aux paramètres d'affichage du Widget 1 */
+#pscroller1{
+font-size: 10px;
+font-family: verdana;
+width: 200px;
+height: 100px;
+padding: 5px;
+border: 1px solid #cccccc; /*  Modification de la couleur  */
+background-color: #fcdca5; /*  Modification de la couleur  */
+}
+
+/* Correspond aux paramètres d'affichage du Widget 2 */
+#pscroller2{
+font-size: 10px;
+font-family: verdana;
+width: 350px;
+height: 20px;
+border: 1px solid black;
+padding: 3px;
+}
+
+/* Correspond a ... */
+#pscroller2 a{
+text-decoration: none;
+}
+
+/* Correspond a Class renseignée par Landry Mercier. C'est à dire ? */
+.someclass{
+background-color: #fcdca5; /* landry - normalement inutile si le background de pscroller1 n'est plus lightyellow */
+background-image: url("http://www.ressources-solidaires.org/squelettes/css/img/back-orangeman.png");
+color: #4b2323;
+border-radius: 0 0 10px 10px;
+}
+
+/* Correspond a ... */
+.someclass a { color: #ff2800; } /* landry - ajout pour les liens */ /*fin modif css landry*/
+// Fin de Class renseignée par Landry Mercier.
+
+
+
+
+/*
 <!--
-rssmikle_url="#URL_SITE_SPIP/squelettes/espace_client/admin/xml/rss_48.xml";
 rssmikle_frame_width="100%";		// responsive est actif, mais besoin d'ajouter une longueur car sinon 180px
 rssmikle_frame_height="380";
-rssmikle_target="_blank";
+rssmikle_target="_emploi";
 rssmikle_font="'Trebuchet MS', Arial, Helvetica, sans-serif";
 rssmikle_font_size="10";
 rssmikle_border="on";
@@ -37,10 +75,5 @@ rssmikle_timezone="Etc/GMT";
 datetime_format="%b %e, %Y %l:%M:%S %p";
 rssmikle_item_description_tag="off";
 rssmikle_item_podcast="off";
-//-->
-
-}
-</script>
-<script type="text/javascript" src="http://widget.feed.mikle.com/js/rssmikle.js"></script>
-<!-- end feedwind code -->
-</div>
+-->
+*/

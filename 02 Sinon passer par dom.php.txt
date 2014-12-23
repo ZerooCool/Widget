@@ -10,3 +10,14 @@ echo "\t\t<p>".nl2br(htmlspecialchars(utf8_decode($div->nodeValue)))."</p>\n";
 }
 catch(DOMException $e) {}
 ?>
+
+
+
+Voir également Xpath
+
+<!-- Xpath -->
+$xml = simplexml_load_file('../xml/rss_test_48.xml');
+foreach($xml->xpath('//voiture') AS $inf){
+echo 'Marque : '.$inf->marque.' - Type : '.$inf->moteur->type.'<br />';}
+
++ http://richard-ostrowski.eu/SILNTI/supports/IP3/xpath.pdf
