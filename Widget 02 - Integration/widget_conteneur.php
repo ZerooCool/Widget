@@ -54,10 +54,10 @@ try{
 		if(empty($fluxrss->channel->title) || empty($fluxrss->channel->description) || empty($fluxrss->channel->item->title)) throw new Exception('Flux invalide');
 		
 			/* Affichage test du titre principale du Flux RSS */
-			echo '<h3>'.$fluxrss->channel->title.'</h3>';
+			/* echo '<h3>'.$fluxrss->channel->title.'</h3>'; */
 		
 			/* Affichage test de la description principale du Flux RSS */
-			echo ('<p>'.$fluxrss->channel->description.'</p>');
+			/* echo ('<p>'.$fluxrss->channel->description.'</p>'); */
 
 			/* Début du Javascript qui permet l'affichage du parser dans sa box. */
 			echo '<script type="text/javascript">';
