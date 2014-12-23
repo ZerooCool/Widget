@@ -3,9 +3,41 @@
 <head>
     <title>Widget RSS</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<!-- Avec la bonne DTD les bords sont bien arrondis. -->
+	
+<!--  Intégrer Widget.css -->
+	<link rel="stylesheet" href="widget.css" />
+
+<!--  Intégrer Widget.js -->
+	<script type="text/javascript" src="widget.js"></script>
+
 </head>
 <body>
 
+<H3><?php 
+echo("Hello Widget !");
+?></H3>
+
+
+
+<!-- Le contenu a afficher par la suite. -->
+<!-- >>> Ci-dessous il faut récupérer les informations depuis le fichier XML. <<< -->
+
+
+<!--  Sources du Widget 1 en exemple. -->
+<script type="text/javascript">
+var pausecontent=new Array()
+pausecontent[0]='<a href="http://www.oxado.com/?origin=pub15190" target="_blank">Oxado</a><br />Webmasters, gagnez de l\'argent en affichant des bannières contextuelles Oxado'
+pausecontent[1]='<a href="http://www.atleticwong.be" target="_blank">AtleticWong.Be</a><br />Une équipe de football...'
+pausecontent[2]='<a href="http://www.espacejavascript.com/DESIGN/chartegraphique.php">Charte Graphique</a><br />Besoin d\'une charte graphique ?.'
+pausecontent[3]='<a href="http://www.espacejavascript.com/DESIGN/chartegraphique.php">Graphique</a><br />Besoin d\'une charte graphique ?.'
+pausecontent[4]='<a href="http://www.espacejavascript.com/DESIGN/chartegraphique.php">Charte</a><br />Besoin d\'une charte graphique ?.'
+pausecontent[5]='<a href="http://www.espacejavascript.com/DESIGN/chartegraphique.php">Chaque</a><br />Besoin d\'une charte graphique ?.'
+</script>
+
+
+<!--  Sources du Widget 2 a adapter. -->
 <?php 
 
 /* ############################## */
@@ -25,22 +57,21 @@ try{
 		/* Un contrôle sur is_string peut être envisagé plutôt que d'utiliser empty. */
 		if(empty($fluxrss->channel->title) || empty($fluxrss->channel->description) || empty($fluxrss->channel->item->title)) throw new Exception('Flux invalide');
 		
-			/* Affichage du titre principale du Flux RSS */
+			/* Affichage test du titre principale du Flux RSS */
 			echo '<h3>'.$fluxrss->channel->title.'</h3>';
 		
-			/* Affichage de la description principale du Flux RSS */
-			echo '<p>'.$fluxrss->channel->description.'</p>';
+			/* Affichage test de la description principale du Flux RSS */
+			echo ('<p>'.$fluxrss->channel->description.'</p>');
 
-			/* Ouvre le script JS */
-			/* echo '<script type=\"text/javascript\">'; */
-			/* echo 'var pausecontentNew=new Array()'; */
-			
+			/* Début du Javascript qui permet l'affichage du parser dans sa box. */
+			echo '<script type=\"text/javascript\">';
+			echo 'var pausecontentNew=new Array()';
 /* ######################################################### */					
 /* # Boucle pour afficher le contenu dans le Widget xHTML. # */
 /* ################################################################################################################################## */
 /* Début */
-			
-				$i = 0; /* Déclaration de la variable $i permettant de boucler et affectation de la valeur 0 */
+
+$i = 0; /* Déclaration de la variable $i permettant de boucler et affectation de la valeur 0 */
 				$nb_affichage = 100; /* Déclaration de la variable $nb_affichage et affectation de la valeur 05*/
 
 					/* Boucle pour afficher l'ensemble des informations du fichier .xml*/
@@ -57,19 +88,18 @@ try{
 
 						
 				
-				/* Le problème, la ligne ne rend pas correctement en JAVASCRIPT */
-				/* \r\n ? */
-				/* Peut être la valeur de $i ? */
-				/* le BR ? */
-				/* parseInt() print_r ..??..??..??..? */
-						
+						/* Le problème, la ligne ne rend pas correctement en JAVASCRIPT */
+						/* \r\n ? */
+						/* Peut être la valeur de $i ? */
+						/* le BR ? */
+						/* parseInt() print_r ..??..??..??..? */
 						
 						
 						/* Création du lien et du titre du lien. */
 						/* Ajout du title et de la target. */
 						/* Ajout de la description */
 						echo 'pausecontentNew['.$i.']=\'<a href=\"'.(string)$item->link.'\" target=\"_offres-emploi\" title=\"'.(string)$item->title.'\">'.(string)$item->title.'</a><br />'.(string)$item->description.'\'';
-						echo '\r\r';
+						echo '<br />';
 						
 					if(++$i>=$nb_affichage)
 					break;
@@ -78,9 +108,11 @@ try{
 /* Fin de la boucle pour afficher le contenu dans le Widget xHTML. */
 /* ################################################################################################################################## */
 
-			 	/* Ferme le script JS */
-			 	/* echo '</script>'; */
+			echo '</script>';
 
+				
+			
+			
 /* Fin d'encapsulation dans le try. */
 /* ################################################################################################################################## */
 		 		
@@ -91,3 +123,45 @@ try{
 /* Bloc catch qui va afficher le message d'erreur. */
 catch(Exception $e){echo $e->getMessage();}
 ?>
+
+
+
+<!-- Titre fixe du Widget 1 -->
+<h3 style="width:200px; color:#ffffff; background-color:#990000; margin:0; text-align:center; padding:5px; border-radius: 10px 10px 0 0; border: 1px solid #ccc;">Offres en cours</h3>
+
+<!-- Affichage du Widget 1 -->
+<div>
+<script type="text/javascript">
+new pausescroller(pausecontent, "pscroller1", "someclass", 2000)
+</script>
+</div>
+
+
+
+<br/><br/>
+
+
+
+<!-- Titre fixe du Widget 2 -->
+<h3 style="width:200px; color:#ffffff; background-color:#990000; margin:0; text-align:center; padding:5px; border-radius: 10px 10px 0 0; border: 1px solid #ccc;">Offres en cours</h3>
+
+<!-- Affichage du Widget 2 -->
+<div>
+<script type="text/javascript">
+new pausescroller(pausecontentNew, "pscroller2", "someclass", 2500)
+</script>
+</div>
+
+
+
+<!-- Code exemple pour afficher les 2 Widget -->
+<!-- new pausescroller(name_of_message_array, CSS_ID, CSS_classname, pause_in_miliseconds) -->
+
+<!-- <script type="text/javascript"> -->
+<!-- new pausescroller(pausecontent, "pscroller1", "someclass", 2000) -->
+<!-- new pausescroller(pausecontentNew, "pscroller2", "someclass", 3000) -->
+<!-- ... -->
+<!-- </script> -->
+
+</body>
+</html>
