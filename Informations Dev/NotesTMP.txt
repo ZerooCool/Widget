@@ -1,16 +1,19 @@
 Le code final doit être englobé entre <div class="margbottom1"> </div>
 
+##########################
+Rappels CSS / JavaScript :
+##########################
+Merci le déboguer JavaScript de Firefox Developer.
 
-Merci le déboguer javascript.
 
-
+#############
+Rappels PHP :
+#############
 echo "\r\r"; fonctionnel
 echo '\r\r'; ne fonctionne pas
 
-
 operation ternaire
 ?"O":"N";
-
 
 Pour connaitre le contenu de l’objet $fluxrss : echo ('var_dump($fluxrss)');
 
@@ -18,43 +21,27 @@ Pour connaitre le contenu de l’objet $fluxrss : echo ('var_dump($fluxrss)');
 ####################
 Evolution possible :
 ####################
-
 Soucis d'encodage multiples et d'accents dans le fichier .xml
-
-	/* IMPORTANT */
-	/* Permet d'ajouter la date de création de l'annonce, mais, certaines dates sont de 1970 sur le fichier actuel rss_48.xml */
-	/* La fonction date prend en paramètre un format et un timestamp. La fonction strtotime convertit la date pudDate en timestamp. */
-	/* echo('<i>publié le'.(string)date('d/m/Y à G\hi',strtotime($item->pubDate)).'</i>'); echo('<br/>'); */
+En fait, avec le addslashes, le soucis est résolu. Je pensais qu'il y avait un problèmes, mais le code iso d'accentuation prend le relais.
+Il faudra voir lors de la migration d'encodage, mais de mon côté client test, ISO tant UTF-8 est affiché.
 
 
-	Utiliser plutot que foreach :
-	($array as $key => $value) {
+/* IMPORTANT */
+/* Permet d'ajouter la date de création de l'annonce, mais, certaines dates sont de 1970 sur le fichier actuel rss_48.xml */
+/* La fonction date prend en paramètre un format et un timestamp. La fonction strtotime convertit la date pudDate en timestamp. */
+/* echo('<i>publié le'.(string)date('d/m/Y à G\hi',strtotime($item->pubDate)).'</i>'); echo('<br/>'); */
 
 
-	Complément pour SimpleXML mais ne fonctionne pas. Bref inutile car le flux n'est de toute façon pas vide.
-	/* Le controle sur les string à la place des empty. */
-	/* La fonction empty peut être remplacée par la fonction is_string qui spécifie à PHP le type de contenu "chaîne de caractères". */
-			$CtrlFlux1 = (isset($fluxrss->channel->title) && is_string($fluxrss->channel->title[0]) && strlen($fluxrss->channel->title)>=4);
-			$CtrlFlux2 = (isset($fluxrss->channel->item->description) && is_string($fluxrss->channel->item->description) && strlen($fluxrss->channel->item->description)>=4);
-			$CtrlFlux3 = (isset($fluxrss->channel->item->title) && is_string($fluxrss->channel->item->title) && strlen($fluxrss->channel->item->title)>=4);
-			echo("<br/>Attente d'affichage de la valeur de la variable<br/>");
-			echo("$CtrlFlux1");
-			echo("<br/><br/>");
-			echo("$CtrlFlux2");
-			echo("<br/><br/>");
-			echo("$CtrlFlux3");
-			if(!(null!==$CtrlFlux1) && (null!==$CtrlFlux2) && (null!==$CtrlFlux3)) {
-				echo ('En attente d\'affichage. Pour le moment rien n\'est affiché.');
-				echo ('<br/>');
-				echo ('<h3>Affichage OK : '.$fluxrss->channel->item->title[0].'</h3><p>'.$fluxrss->channel->item->description.'</p>');}
+Utiliser plutot que foreach : ($array as $key => $value) {
 
-				
-			/* Test pour connaître l'existance, si chaine de caractère, et la longueur.*/		
-			echo isset($fluxrss->channel->title)?"O":"N";
-			echo is_string($fluxrss->channel->title)?"O":"N"; /* Affiche Non */
-			echo is_string($fluxrss->channel->title[0])?"O":"N"; /* Affiche Non */
-			echo strlen($fluxrss->channel->title)>=4?"O":"N";
-			echo("<br/>");
-			
-			var_dump($fluxrss->channel->title);
-			echo $fluxrss->channel->title[0];
+
+Complément pour SimpleXML
+Le controle sur les string à la place des empty. Ne fonctionne pas. Inutile car le flux n'est de toute façon pas vide.
+Test pour connaître l'existance du fichier, si chaine de caractère, la longueur.
+	echo isset($fluxrss->channel->title)?"O":"N"; /* Affiche Oui */
+	echo is_string($fluxrss->channel->title)?"O":"N"; /* Affiche Non */
+	echo is_string($fluxrss->channel->title[0])?"O":"N"; /* Affiche Non */
+	echo strlen($fluxrss->channel->title)>=4?"O":"N";
+	
+	var_dump($fluxrss->channel->title);
+	echo $fluxrss->channel->title[0];

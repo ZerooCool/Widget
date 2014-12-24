@@ -1,5 +1,5 @@
-/* Correspond aux paramètres d'affichage du Widget 1 */
-#pscroller1{
+/* Correspond aux paramètres d'affichage du Widget01 */
+#pscroller01{
 font-size: 10px;
 font-family: verdana;
 width: 200px;
@@ -9,8 +9,18 @@ border: 1px solid #cccccc; /*  Modification de la couleur  */
 background-color: #fcdca5; /*  Modification de la couleur  */
 }
 
-/* Correspond aux paramètres d'affichage du Widget 2 */
-#pscroller2{
+/* Correspond aux paramètres d'affichage du Widget02 */
+#pscroller02{
+font-size: 10px;
+font-family: verdana;
+width: 350px;
+height: 20px;
+border: 1px solid black;
+padding: 3px;
+}
+
+/* Correspond aux paramètres d'affichage du Widget03 */
+#pscroller03{
 font-size: 10px;
 font-family: verdana;
 width: 350px;
@@ -20,7 +30,17 @@ padding: 3px;
 }
 
 /* Correspond a ... */
-#pscroller2 a{
+#pscroller01 a{
+text-decoration: none;
+}
+
+/* Correspond a ... */
+#pscroller02 a{
+text-decoration: none;
+}
+
+/* Correspond a ... */
+#pscroller03 a{
 text-decoration: none;
 }
 
@@ -34,7 +54,7 @@ border-radius: 0 0 10px 10px;
 
 /* Correspond a ... */
 .someclass a { color: #ff2800; } /* landry - ajout pour les liens */ /*fin modif css landry*/
-// Fin de Class renseignée par Landry Mercier.
+/* Fin de Class renseignée par Landry Mercier. */
 
 
 
