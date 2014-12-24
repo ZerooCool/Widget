@@ -5,6 +5,9 @@ Rappels CSS / JavaScript :
 ##########################
 Merci le déboguer JavaScript de Firefox Developer.
 
+Objectif : Paramétrer les tailles sur des critères standards. <<<<<<<<<<<<
+
+
 
 #############
 Rappels PHP :
