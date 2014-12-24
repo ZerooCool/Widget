@@ -19,6 +19,14 @@ Pour connaitre le contenu de l’objet $fluxrss : echo ('var_dump($fluxrss)');
 Evolution possible :
 ####################
 
+Soucis d'encodage multiples et d'accents dans le fichier .xml
+
+	/* IMPORTANT */
+	/* Permet d'ajouter la date de création de l'annonce, mais, certaines dates sont de 1970 sur le fichier actuel rss_48.xml */
+	/* La fonction date prend en paramètre un format et un timestamp. La fonction strtotime convertit la date pudDate en timestamp. */
+	/* echo('<i>publié le'.(string)date('d/m/Y à G\hi',strtotime($item->pubDate)).'</i>'); echo('<br/>'); */
+
+
 	Utiliser plutot que foreach :
 	($array as $key => $value) {
 

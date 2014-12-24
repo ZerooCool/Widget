@@ -25,15 +25,15 @@ try{
 		/* Un contrôle sur is_string peut être envisagé plutôt que d'utiliser empty. */
 		if(empty($fluxrss->channel->title) || empty($fluxrss->channel->description) || empty($fluxrss->channel->item->title)) throw new Exception('Flux invalide');
 		
-			/* Affichage du titre principale du Flux RSS */
-			echo '<h3>'.$fluxrss->channel->title.'</h3>';
+		/* Affichage du titre principale du Flux RSS */
+		/* echo '<h3>'.$fluxrss->channel->title.'</h3>'; */
 		
-			/* Affichage de la description principale du Flux RSS */
-			echo '<p>'.$fluxrss->channel->description.'</p>';
+		/* Affichage de la description principale du Flux RSS */
+		/* echo '<p>'.$fluxrss->channel->description.'</p>'; */
 
-			/* Ouvre le script JS */
+			/* Ouvre le script JavaScript qui va traiter les lignes générées. */
 			/* echo '<script type="text/javascript">'; */
-			/* echo 'var pausecontentNew=new Array()'; */
+			/* echo 'var pausecontentNew=new Array();'; */
 			
 /* ######################################################### */					
 /* # Boucle pour afficher le contenu dans le Widget xHTML. # */
@@ -47,26 +47,18 @@ try{
 					foreach($fluxrss->channel->item as $item){
 						
 						/* IMPORTANT */
-						/* ERREUR RS A REPORTER */
 						/* Permet d'ajouter la date de création de l'annonce, mais, certaines dates sont de 1970 sur le fichier actuel rss_48.xml */
 						/* La fonction date prend en paramètre un format et un timestamp. La fonction strtotime convertit la date pudDate en timestamp. */
 						/* echo('<i>publié le'.(string)date('d/m/Y à G\hi',strtotime($item->pubDate)).'</i>'); echo('<br/>'); */
 						
 						/* Le parsing et son rendu doit donner le modèle ci-dessous */
-						/* pausecontentNew[0]='<a href="LIEN" target="_offres-emploi">TITRE DU LIEN</a><br />DESCRIPTION' */
+						/* pausecontentNew[0]='<a href="LIEN" target="_offres-emploi">TITRE DU LIEN</a><br />DESCRIPTION' */						
 
-
-		/* Le problème, la ligne ne rend pas correctement en JAVASCRIPT puisque le rendu final ne fonctionne pas. */
-
-						
-
-						/* Création du lien et du titre du lien. */
-						/* Ajout du title et de la target. */
-						/* Ajout de la description */
-						/* addslashes rajoute l'échappement des caractères attendu par le javascript. */
+						/* Création du lien et du titre du lien. Ajout du title et de la target. Ajout de la description */
+						/* addslashes rajoute l'échappement des caractères attendu par le script JavaScript. */
 						echo 'pausecontentNew['.$i.']=\'<a href="'.(string)$item->link.'" target="_offres-emploi" title="'.addslashes((string)$item->title).'">'.addslashes((string)$item->title).'</a><br />'.addslashes((string)$item->description).'\'';
 						
-						/* Ajoute un retour chariot, pour un affichage propre du code source rendu */
+						/* Ajoute un retour chariot, pour un affichage propre du rendu du code source. */
 						echo "\r";
 
 					if(++$i>=$nb_affichage)
@@ -76,7 +68,7 @@ try{
 /* Fin de la boucle pour afficher le contenu dans le Widget xHTML. */
 /* ################################################################################################################################## */
 
-			 	/* Ferme le script JS */
+			 	/* Ferme le script JavaScript */
 			 	/* echo '</script>'; */
 
 /* Fin d'encapsulation dans le try. */

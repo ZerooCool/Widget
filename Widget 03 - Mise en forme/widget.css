@@ -1,0 +1,79 @@
+/* Correspond aux paramètres d'affichage du Widget 1 */
+#pscroller1{
+font-size: 10px;
+font-family: verdana;
+width: 200px;
+height: 100px;
+padding: 5px;
+border: 1px solid #cccccc; /*  Modification de la couleur  */
+background-color: #fcdca5; /*  Modification de la couleur  */
+}
+
+/* Correspond aux paramètres d'affichage du Widget 2 */
+#pscroller2{
+font-size: 10px;
+font-family: verdana;
+width: 350px;
+height: 20px;
+border: 1px solid black;
+padding: 3px;
+}
+
+/* Correspond a ... */
+#pscroller2 a{
+text-decoration: none;
+}
+
+/* Correspond a Class renseignée par Landry Mercier. C'est à dire ? */
+.someclass{
+background-color: #fcdca5; /* landry - normalement inutile si le background de pscroller1 n'est plus lightyellow */
+background-image: url("http://www.ressources-solidaires.org/squelettes/css/img/back-orangeman.png");
+color: #4b2323;
+border-radius: 0 0 10px 10px;
+}
+
+/* Correspond a ... */
+.someclass a { color: #ff2800; } /* landry - ajout pour les liens */ /*fin modif css landry*/
+// Fin de Class renseignée par Landry Mercier.
+
+
+
+
+/*
+<!--
+rssmikle_frame_width="100%";		// responsive est actif, mais besoin d'ajouter une longueur car sinon 180px
+rssmikle_frame_height="380";
+rssmikle_target="_emploi";
+rssmikle_font="'Trebuchet MS', Arial, Helvetica, sans-serif";
+rssmikle_font_size="10";
+rssmikle_border="on";
+responsive="on";			// autre valeur à off : donne une longueur de 100% de l'iframe
+rssmikle_css_url="";
+text_align="left";
+corner="on";				// angles arrondis
+autoscroll="on_mc";			// défilement automatique - autre valeur à off
+scrolldirection="up";
+scrollstep="3";
+mcspeed="20";
+sort="New";
+rssmikle_title="on";
+rssmikle_title_sentence="Offres en cours";
+rssmikle_title_link="#URL_SITE_SPIP";
+rssmikle_title_bgcolor="#990000";
+rssmikle_title_color="#FFFFFF";
+rssmikle_title_bgimage="http://";
+rssmikle_item_bgcolor="#fcdca5";
+rssmikle_item_bgimage="#URL_SITE_SPIP/squelettes/css/img/back-orangeman.png"; //fond image du widget, fond devient bgcolor si non rempli
+rssmikle_item_title_length="55";
+rssmikle_item_title_color="#ff2800";
+rssmikle_item_border_bottom="on";
+rssmikle_item_description="on";
+rssmikle_item_description_length="150";
+rssmikle_item_description_color="#4b2323";
+rssmikle_item_date="off";
+rssmikle_timezone="Etc/GMT";
+datetime_format="%b %e, %Y %l:%M:%S %p";
+rssmikle_item_description_tag="off";
+rssmikle_item_podcast="off";
+-->
+*/
